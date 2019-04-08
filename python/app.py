@@ -8,7 +8,7 @@ CORS(app)
 
 
 @app.route("/today", methods=["GET"])
-def index():
+def today():
     return _json_response({"today": str(date.today())})
 
 

@@ -31,11 +31,12 @@ class App extends Component {
           </div>
         </form>
 
+        <h2>Available Times</h2>
         <table className="advisors table">
           <thead>
             <tr>
               <th>Advisor ID</th>
-              <th>Availabilities</th>
+              <th>Available Times</th>
             </tr>
           </thead>
           <tbody>
