@@ -1,5 +1,8 @@
 # Thinkful Coding Challenge
 
+## Tim Tyrrell Overview Video
+[Loom Video](https://www.loom.com/share/114678e085c24b718db665f9a9a26932)
+
 Welcome to the coding challenge portion of the Thinkful Engineering interview! Thank you for taking the time to go through this exercise and show us what you can contribute to the team.
 
 Included in this repository is a bare-bones ES6/React web client application that can pull from either a Python/Flask API or a Node/Express API (your choice). Your challenge is to update the client code and one of the APIs so that the system meets the [acceptance criteria](#acceptance-criteria) below.
