@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.fetchToday();
+    this.state = {
+      available_times: {},
+      instructor_keys: [],
+    }
+  }
+
+  componentDidMount(){
+    this.fetchAvailableTimes();
   }
 
   async fetchToday() {
