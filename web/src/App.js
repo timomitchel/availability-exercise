@@ -17,9 +17,30 @@ class App extends Component {
       const res = await fetch("http://localhost:4433/available_times");
       const json = await res.json();
       this.setState({available_times: json.available_times});
+      var isDisabled = this.state.name === ""
     } catch (e) {
       console.error("Failed to fetch 'available_times' data", e);
     }
+    this.getKeys()
+  }
+
+  getKeys = () => {
+    const availableTimes = this.state.available_times
+    const availableKeys = Object.keys(availableTimes)
+    this.setState({
+      name: "",
+      instructor_keys: availableKeys
+    })
+  }
+
+  displayTimes = () => {
+    if (this.state.available_times){
+      return this.state.available_times;
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({ name: e.target.value })
   }
 
   render() {
