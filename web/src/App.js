@@ -46,81 +46,54 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <h1>Book Time with an Advisor</h1>
-
-        {this.state.today && <span id="today">Today is {this.state.today}.</span>}
+      <h1>Book Time with an Advisor</h1>
 
         <form id="name-form" className="col-md-6">
           <div className="form-group">
             <label htmlFor="name-field">Your Name</label>
-            <input type="text" id="name-field" className="form-control" />
+            <input value={this.state.name} onChange={this.handleChange} type="text" id="name-field" className="form-control" placeholder="Enter Name"/>
           </div>
         </form>
-
         <h2>Available Times</h2>
-        <table className="advisors table">
-          <thead>
-            <tr>
-              <th>Advisor ID</th>
-              <th>Available Times</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>35545</td>
-              <td>
-                <ul className="list-unstyled">
-                  <li>
-                    <time dateTime="2019-04-04T13:00:00-04:00" className="book-time">4/4/2019 1:00 pm</time>
-                    <button className="book btn-small btn-primary">Book</button>
-                  </li>
-                  <li>
-                    <time dateTime="2019-04-05T10:00:00-04:00" className="book-time">4/5/2019 10:00 am</time>
-                    <button className="book btn-small btn-primary">Book</button>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>36232</td>
-              <td>
-                <ul className="list-unstyled">
-                  <li>
-                    <time dateTime="2019-04-02T13:00:00-04:00" className="book-time">4/2/2019 1:00 pm</time>
-                    <button className="book btn-small btn-primary">Book</button>
-                  </li>
-                  <li>
-                    <time dateTime="2019-04-03T11:00:00-04:00" className="book-time">4/3/2019 11:00 am</time>
-                    <button className="book btn-small btn-primary">Book</button>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Booked Times</h2>
-        <table className="bookings table">
-          <thead>
-            <tr>
-              <th>Advisor ID</th>
-              <th>Student Name</th>
-              <th>Date/Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>36232</td>
-              <td>John Smith</td>
-              <td>
-                <time dateTime="2019-04-03T10:00:00-04:00">4/3/2019 10:00 am</time>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <InstructorKeys availableTimes={this.state.available_times}/>
       </div>
     );
   }
 }
-
+class InstructorKeys extends Component {
+  render() {
+    return (
+      <table className="advisors table">
+        <thead>
+          <tr>
+            <th>Advisor ID</th>
+            <th>Available Times</th>
+          </tr>
+        </thead>
+      <tbody>
+        {
+          Object.entries(this.props.availableTimes).map(([key, value], j) => (
+              <tr>
+                <td>{key}</td>
+                <td>
+                  <ul>
+                    <li>
+                      {value.map(time =>
+                      <div>
+                        <time dateTime={time} className="book-time">{time}</time>
+                        <button disabled={this.isDisabled} className="book btn-small btn-primary">Book</button>
+                      </div>
+                      )}
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+          ))
+        }
+        </tbody>
+      </table>
+    );
+  }
+}
 export default App;
+
