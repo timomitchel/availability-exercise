@@ -2,3 +2,14 @@ flask==1.0.2
 flask_cors==3.0.7
 requests==2.21.0
 pytest==4.4.0
+dateparser==0.7.1
+humanize==0.5.1
+maya==0.6.1
+pendulum==2.0.4
+python-dateutil==2.8.0
+pytz==2019.1
+pytzdata==2019.1
+regex==2019.4.10
+six==1.12.0
+snaptime==0.2.4
+tzlocal==1.5.1
