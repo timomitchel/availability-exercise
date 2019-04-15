@@ -12,13 +12,13 @@ class App extends Component {
     this.fetchAvailableTimes();
   }
 
-  async fetchToday() {
+  async fetchAvailableTimes() {
     try {
-      const res = await fetch("http://localhost:4433/today");
+      const res = await fetch("http://localhost:4433/available_times");
       const json = await res.json();
-      this.setState({today: json.today});
+      this.setState({available_times: json.available_times});
     } catch (e) {
-      console.error("Failed to fetch 'today' data", e);
+      console.error("Failed to fetch 'available_times' data", e);
     }
   }
 
